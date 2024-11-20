@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Nosotros from "./components/Nosotros";
@@ -20,6 +20,7 @@ function App() {
   };
 
   return (
+    <HashRouter>
     <Router>
       <div className="bg-gray-100">
         <Header cart={cart} toggleCart={toggleCart} /> {/* Pasamos cart y toggleCart */}
@@ -32,6 +33,7 @@ function App() {
         </Routes>
       </div>
     </Router>
+    </HashRouter>
   );
 }
 

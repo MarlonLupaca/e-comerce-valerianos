@@ -5,17 +5,17 @@ import "react-multi-carousel/lib/styles.css";
 const Home = () => {
   const carouselItems = [
     {
-      image: "carrusel1.webp",
+      image: "./carrusel1.webp",
       title: "¡Delicias únicas para cada ocasión!",
       description: "Explora nuestras tortas artesanales hechas con los mejores ingredientes.",
     },
     {
-      image: "carrusel1.webp",
+      image: "./carrusel1.webp",
       title: "Celebraciones inolvidables",
       description: "Diseñamos pasteles personalizados que reflejan tus momentos especiales.",
     },
     {
-      image: "carrusel1.webp",
+      image: "./carrusel1.webp",
       title: "Variedad de sabores y estilos",
       description: "Elige entre una amplia selección de tortas para todos los gustos.",
     },

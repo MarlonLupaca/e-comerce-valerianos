@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom"; // Asegúrate de importar HashRouter aquí
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Nosotros from "./components/Nosotros";
@@ -10,20 +10,20 @@ import Productos from "./components/Productos";
 function App() {
   const [cart, setCart] = useState([]);
 
+  // Función para agregar productos al carrito
   const addToCart = (product) => {
     setCart([...cart, product]);
   };
 
+  // Función para eliminar productos del carrito por índice
   const removeFromCart = (index) => {
-    const newCart = [...cart];
-    newCart.splice(index, 1);
-    setCart(newCart);
+    setCart(cart.filter((_, i) => i !== index)); // Simplificado con filter
   };
 
   return (
-    <Router basename="/e-comerce-valerianos">
+    <HashRouter> {/* Mantén HashRouter */}
       <div className="bg-gray-100">
-        <Header />
+        <Header cart={cart} removeFromCart={removeFromCart} /> {/* Si Header necesita props relacionadas con el carrito */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
@@ -32,7 +32,7 @@ function App() {
           <Route path="/contacto" element={<Contacto />} />
         </Routes>
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

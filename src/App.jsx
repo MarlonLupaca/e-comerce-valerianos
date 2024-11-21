@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Nosotros from "./components/Nosotros";
@@ -8,22 +8,22 @@ import Contacto from "./components/Contacto";
 import Productos from "./components/Productos";
 
 function App() {
-  const [cart, setCart] = useState([]); // Aquí se guarda el carrito
-  const [isCartOpen, setIsCartOpen] = useState(false); // Estado para el carrito desplegable
+  const [cart, setCart] = useState([]);
 
   const addToCart = (product) => {
-    setCart([...cart, product]); // Agregar productos al carrito
+    setCart([...cart, product]);
   };
 
-  const toggleCart = () => {
-    setIsCartOpen(!isCartOpen); // Cambiar el estado de visibilidad del carrito
+  const removeFromCart = (index) => {
+    const newCart = [...cart];
+    newCart.splice(index, 1);
+    setCart(newCart);
   };
 
   return (
-    <HashRouter>
-    <Router>
+    <Router basename="/e-comerce-valerianos">
       <div className="bg-gray-100">
-        <Header cart={cart} toggleCart={toggleCart} /> {/* Pasamos cart y toggleCart */}
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/tienda" element={<Tienda />} />
@@ -33,7 +33,6 @@ function App() {
         </Routes>
       </div>
     </Router>
-    </HashRouter>
   );
 }
 
